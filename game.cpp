@@ -1218,7 +1218,8 @@ input_ret game::get_input(int timeout_ms)
    else
     u.pause(this);
    break;
-
+  
+  case ACTION_MOVE_N_FAR:
   case ACTION_MOVE_N:
    if (u.in_vehicle)
     pldrive(0, -1);
@@ -1226,6 +1227,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(0, -1);
    break;
 
+  case ACTION_MOVE_NE_FAR:
   case ACTION_MOVE_NE:
    if (u.in_vehicle)
     pldrive(1, -1);
@@ -1233,6 +1235,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(1, -1);
    break;
 
+  case ACTION_MOVE_E_FAR:
   case ACTION_MOVE_E:
    if (u.in_vehicle)
     pldrive(1, 0);
@@ -1240,6 +1243,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(1, 0);
    break;
 
+  case ACTION_MOVE_SE_FAR:
   case ACTION_MOVE_SE:
    if (u.in_vehicle)
     pldrive(1, 1);
@@ -1247,6 +1251,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(1, 1);
    break;
 
+  case ACTION_MOVE_S_FAR:
   case ACTION_MOVE_S:
    if (u.in_vehicle)
     pldrive(0, 1);
@@ -1254,6 +1259,7 @@ input_ret game::get_input(int timeout_ms)
    plmove(0, 1);
    break;
 
+  case ACTION_MOVE_SW_FAR:
   case ACTION_MOVE_SW:
    if (u.in_vehicle)
     pldrive(-1, 1);
@@ -1261,6 +1267,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(-1, 1);
    break;
 
+  case ACTION_MOVE_W_FAR:
   case ACTION_MOVE_W:
    if (u.in_vehicle)
     pldrive(-1, 0);
@@ -1268,6 +1275,7 @@ input_ret game::get_input(int timeout_ms)
     plmove(-1, 0);
    break;
 
+  case ACTION_MOVE_NW_FAR:
   case ACTION_MOVE_NW:
    if (u.in_vehicle)
     pldrive(-1, -1);

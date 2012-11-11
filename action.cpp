@@ -33,7 +33,7 @@ Fix data/keymap.txt at your next chance!", id.c_str());
      char ch;
      fin >> ch;
      if (keymap.find(ch) != keymap.end())
-      debugmsg("\
+     debugmsg("\
 Warning!  '%c' assigned twice in the keymap!\n\
 %s is being ignored.\n\
 Fix data/keymap.txt at your next chance!", ch, id.c_str());
@@ -91,8 +91,24 @@ std::string action_ident(action_id act)
  switch (act) {
   case ACTION_PAUSE:
    return "pause";
+  case ACTION_MOVE_N_FAR:
+   return "move_n_far";
   case ACTION_MOVE_N:
    return "move_n";
+  case ACTION_MOVE_NE_FAR:
+   return "move_ne_far";
+  case ACTION_MOVE_E_FAR:
+   return "move_e_far";
+  case ACTION_MOVE_SE_FAR:
+   return "move_se_far";
+  case ACTION_MOVE_S_FAR:
+   return "move_s_far";
+  case ACTION_MOVE_SW_FAR:
+   return "move_sw_far";
+  case ACTION_MOVE_W_FAR:
+   return "move_w_far";
+  case ACTION_MOVE_NW_FAR:
+   return "move_nw_far";
   case ACTION_MOVE_NE:
    return "move_ne";
   case ACTION_MOVE_E:
@@ -219,8 +235,27 @@ std::string action_name(action_id act)
  switch (act) {
   case ACTION_PAUSE:
    return "Pause";
+  case ACTION_MOVE_N_FAR:
+   return "Move Far North";
   case ACTION_MOVE_N:
    return "Move North";
+  
+  case ACTION_MOVE_NE_FAR:
+   return "Move Far Northeast";
+  case ACTION_MOVE_E_FAR:
+   return "Move Far East";
+  case ACTION_MOVE_SE_FAR:
+   return "Move Far Southeast";
+  case ACTION_MOVE_S_FAR:
+   return "Move Far South";
+  case ACTION_MOVE_SW_FAR:
+   return "Move Far Southwest";
+  case ACTION_MOVE_W_FAR:
+   return "Move Far West";
+  case ACTION_MOVE_NW_FAR:
+   return "Move Far Northwest";
+  
+
   case ACTION_MOVE_NE:
    return "Move Northeast";
   case ACTION_MOVE_E:

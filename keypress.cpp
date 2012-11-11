@@ -86,6 +86,34 @@ void get_direction(int &x, int &y, char ch)
   x = 1;
   y = 1;
   return;
+ case 'Y':
+  x = -10;
+  y = -10;
+  return;
+ case 'U':
+  x = 10;
+  y = -10;
+  return;
+ case 'H':
+  x = -10;
+  return;
+ case 'J':
+  y = 10;
+  return;
+ case 'K':
+  y = -10;
+  return;
+ case 'L':
+  x = 10;
+  return;
+ case 'B':
+  x = -10;
+  y = 10;
+  return;
+ case 'N':
+  x = 10;
+  y = 1;
+  return;
  case '.':
  case ',':
  case 'g':
@@ -109,29 +137,57 @@ void get_direction(game *g, int &x, int &y, char ch)
   act = g->keymap[ch];
 
  switch (act) {
+ case ACTION_MOVE_NW_FAR:
+  y = -10;
+  x = -10;
+  return;
  case ACTION_MOVE_NW:
   x = -1;
   y = -1;
+  return;
+ case ACTION_MOVE_NE_FAR:
+  x = 10;
+  y = -10;
   return;
  case ACTION_MOVE_NE:
   x = 1;
   y = -1;
   return;
+ case ACTION_MOVE_W_FAR:
+  x = -10;
+  return;
  case ACTION_MOVE_W:
   x = -1;
+  return;
+ case ACTION_MOVE_S_FAR:
+  y = 10;
   return;
  case ACTION_MOVE_S:
   y = 1;
   return;
+ case ACTION_MOVE_N_FAR:
+  y = -10;
+  return;
  case ACTION_MOVE_N:
   y = -1;
+  return;
+ case ACTION_MOVE_E_FAR:
+  x = 10;
   return;
  case ACTION_MOVE_E:
   x = 1;
   return;
+ case ACTION_MOVE_SW_FAR:
+  x = -10;
+  y = 10;
+  return;
  case ACTION_MOVE_SW:
   x = -1;
   y = 1;
+  return;
+ case ACTION_MOVE_SE_FAR:
+  x = 10;
+  y = 10;
   return;
  case ACTION_MOVE_SE:
   x = 1;
@@ -192,6 +248,14 @@ move_s    j 2\n\
 move_sw   b 1\n\
 move_w    h 4\n\
 move_nw   y 7\n\
+move_n_f    K\n\
+move_ne_f   U\n\
+move_e_f    L\n\
+move_se_f   N\n\
+move_s_f    J\n\
+move_sw_f   B\n\
+move_w_f    H\n\
+move_nw_f  Y\n\
 move_down >\n\
 move_up   <\n\
 \n\
