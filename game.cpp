@@ -2563,7 +2563,7 @@ void game::draw_ter(int posx, int posy)
 
 void game::refresh_all()
 {
-  m.reset_vehicle_cache();
+ m.reset_vehicle_cache();
  draw();
  draw_minimap();
  //wrefresh(w_HP);
@@ -4619,6 +4619,15 @@ void game::examine()
     }
     add_msg("The gate is opened!");
   }
+/* } else if (m.ter(examx, examy) == t_dirt || m.ter(examx, examy) == t_grass) {
+    m.ter(examx, examy) = t_wall_wood;
+    m.ter(examx, examy) = t_shrub;
+    m.ter(examx, examy) = t_underbrush;
+    m.ter(examx, examy) = t_wall_v;
+    m.ter(examx, examy) = t_wall_h;
+    m.ter(examx, examy) = t_water_dp;
+*/ 
+//Debug for testing things
  } else if (m.ter(examx, examy) == t_pit && query_yn("Place a plank over the pit?")) {
   if (u.has_amount(itm_2x4, 1)) {
    u.use_amount(itm_2x4, 1);
@@ -6820,6 +6829,8 @@ void game::vertical_move(int movez, bool force)
 
  levz += movez;
  u.moves -= 100;
+ m.veh_cached_parts.clear();
+ m.vehicle_list.clear();
  m.load(this, levx, levy);
  u.posx = stairx;
  u.posy = stairy;
@@ -7513,6 +7524,8 @@ void game::teleport(player *p)
  } while (tries < 15 && !is_empty(newx, newy));
  bool can_see = (is_u || u_see(newx, newy, t));
  std::string You = (is_u ? "You" : p->name);
+ if (p->in_vehicle)
+   m.unboard_vehicle (this, p->posx, p->posy);
  p->posx = newx;
  p->posy = newy;
  if (tries == 15) {
